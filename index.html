@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>AR 캐릭터 테스트</title>
+
+    <!-- A-Frame (3D 씬 구성) -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+
+    <!-- AR.js (마커 인식 및 카메라 연결) -->
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
+
+    <!-- A-Frame Extras (애니메이션 재생) -->
+    <script src="https://unpkg.com/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
+  </head>
+
+  <body style="margin: 0; overflow: hidden;">
+    <!-- AR 씬 시작 -->
+    <a-scene embedded arjs>
+      <!-- 카메라 -->
+      <a-entity camera></a-entity>
+
+      <!-- 마커 인식 (hiro) -->
+      <a-marker preset="hiro">
+        <!-- 캐릭터 모델: glb 형식 -->
+        <a-entity
+          gltf-model="#charModel"
+          animation-mixer
+          scale="0.5 0.5 0.5"
+          position="0 0 0">
+        </a-entity>
+      </a-marker>
+
+      <!-- 캐릭터 모델 미리 로드 -->
+      <a-assets>
+        <a-asset-item id="charModel" src="hiphop.glb"></a-asset-item>
+      </a-assets>
+    </a-scene>
+  </body>
+</html>
